@@ -1,76 +1,77 @@
 import Layout from "../Layout/Layout";
 import "./Login.css";
 import { useState } from "react";
+import {useNavigate} from "react-router-dom"
+import {useAuth} from "../../context/AuthContext.jsx"
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState(null)
+  const [message, setMessage] = useState(null)
+  const navigate = useNavigate()
 
-  const handleName = (e) => {
-    setEmail(e.target.value);
-  };
+  const { login } = useAuth()
 
-  const handlePassword = (e) => {
-    setPassword(e.target.value);
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setError(null)
+    setMessage(null)
 
-  const validarEmail = (email) => {
-    return email.includes("@") && email.includes(".");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
- 
     if (!email || !password) {
-      setError("Todos los campos son obligatorios");
-      return;
+      setError("Debes completar los campos...")
+      return
     }
 
-    if (!validarEmail(email)) {
-      setError("El email no es válido");
-      return;
+    try {
+      await login(email, password)
+      setMessage("Usuario loguedo con éxito...")
+      setEmail("")
+      setPassword("")
+      setTimeout(() => {
+        setMessage("Redirigiendo al home...")
+      }, 2000)
+      setTimeout(() => {
+        navigate("/")
+      }, 3000)
+    } catch (error) {
+      setError(error.message)
     }
-
-    
-    setError("");
-    console.log({ email, password });
-    alert("Login completado");
-    
-setEmail("");
-setPassword("");
-
-  };
+  }
 
   return (
-    <Layout>
-      <h1 className="login-title">Login</h1>
-      <section className="registro-form-section">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            onChange={handleName}
-            value={email}
-          />
+    <>
+      <Layout>
+        <section className="login-section">
+          <form onSubmit={handleSubmit} >
+            <h1 className="login-title">Login</h1>
+            <label htmlFor="email">Correo electrónico:</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              onChange={(e) =>
+                setEmail(e.target.value)}
+            />
 
-        <label htmlFor="password">Contraseña</label>
-        <input
-            type="password"
-            name="password"
-            id="password"
-            onChange={handlePassword}
-            value={password}
-        />
-        <button type="submit">Ingresar</button>
-        {error && <p className="error">{error}</p>}
-        </form>
-      </section>
-    </Layout>
-  );
-};
+            <label htmlFor="password">Contraseña:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              onChange={(e) =>
+                setPassword(e.target.value)
+              }
+            />
 
-export default Login;
+            <button>Iniciar sesión</button>
+          </form>
+          <h5 className="error-message">{error}</h5>
+          <h5 className="success-message">{message}</h5>
+        </section>
+      </Layout>
+    </>
+  )
+}
+
+export default Login

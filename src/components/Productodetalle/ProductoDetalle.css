@@ -1,0 +1,113 @@
+.info-producto-container {
+margin-top: 20px; 
+min-height: 70vh;
+max-width: 1500px;
+margin: 0 auto;
+padding: 1.5rem;
+display: flex;
+justify-content: center;
+align-items: center
+}
+
+
+.producto-detalles {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detalles-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nombre-producto {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.precio, .sku {
+    color: #1c3125;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-left: 2%;
+}
+
+.material{
+    font-size: 18px; 
+    color: #3a3535;
+    margin-bottom: 10px;
+    margin-left: 3%;
+    
+}
+
+.descripcion {
+    margin-top: 15px;
+}
+
+.toggle-descripcion {
+    background: #090a13;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-left: 2%;
+}
+
+.toggle-descripcion:hover {
+    background-color: #303f9f;
+}
+
+.descripcion p {
+    margin-top: 10px;
+    font-size: 18px; 
+    line-height: 1.6;
+    color: #0b0808;
+    transition: opacity 0.3s ease;
+    font-weight: bold;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.agregar-carrito {
+    padding: 15px 20px;
+    background-color: #151816;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.agregar-carrito:hover {
+    background-color: #219150;
+}
+.info-producto-container{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.info-producto-container {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.material {
+    font-size: 18px; 
+    color: #3a3535;
+    line-height: 1.6; 
+    margin-bottom: 8px; 
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
