@@ -32,6 +32,14 @@ const firebaseConfig = {
   appId: "1:122011441859:web:455c61e7954758a189a076"
 };
 
+##  Instalación
+
+1. Clonar el repositorio:
+
+```bash
+git clone https://github.com/gastondls/tp-obligatorio-2
+cd tp-obligatorio-2
+
 ## Ejecutar la app
 npm run dev
 

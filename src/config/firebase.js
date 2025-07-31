@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyARTKctavbKrnMxDPKPFZ9aj18wjtT8psE",
-  authDomain: "productos-utn-curso.firebaseapp.com",
-  projectId: "productos-utn-curso",
-  storageBucket: "productos-utn-curso.firebasestorage.app",
-  messagingSenderId: "122011441859",
-  appId: "1:122011441859:web:455c61e7954758a189a076"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
